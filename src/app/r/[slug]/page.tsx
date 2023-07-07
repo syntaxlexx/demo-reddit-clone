@@ -44,6 +44,8 @@ const page: FC<pageProps> = async ({ params }) => {
       </h1>
 
       <MiniCreatePost session={session} />
+
+      {/* posts */}
     </div>
   );
 };
