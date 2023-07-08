@@ -3,6 +3,9 @@ import { Post, User, Vote } from "@prisma/client";
 import { MessageSquare } from "lucide-react";
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
+import PostVoteClient from "./post-vote/PostVoteClient";
+
+type PartialVote = Pick<Vote, "type">;
 
 interface PostProps {
   subredditName: string;
@@ -11,15 +14,28 @@ interface PostProps {
     votes: Vote[];
   };
   commentAmt: number;
+  votesAmt: number;
+  currentVote?: PartialVote;
 }
 
-const Post: FC<PostProps> = ({ subredditName, post, commentAmt }) => {
+const Post: FC<PostProps> = ({
+  subredditName,
+  post,
+  commentAmt,
+  votesAmt,
+  currentVote,
+}) => {
   const pRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="rounded-md bg-white shadow">
       <div className="px-6 py-4 flex justify-between">
         {/* postvotes */}
+        <PostVoteClient
+          initialVotesAmt={votesAmt}
+          postId={post.id}
+          initialVote={currentVote?.type}
+        />
 
         <div className="w-0 flex-1">
           <div className="max-h-40 mt-1 text-sm text-gray-500">
@@ -39,13 +55,11 @@ const Post: FC<PostProps> = ({ subredditName, post, commentAmt }) => {
             <span className="px-1">•</span>
             {formatTimeToNow(post.createdAt)}
           </div>
-
           <a href={`/r/${subredditName}/post/${post.id}`}>
             <h1 className="text-lg font-semibold py-2 leading-6 text-gray-900">
               {post.title}
             </h1>
           </a>
-
           {/* use ref here to check if p exceeds the height. if it does, blur some content */}
           <div
             className="relative text-sm max-h-40 w-full overflow-clip"
@@ -57,6 +71,7 @@ const Post: FC<PostProps> = ({ subredditName, post, commentAmt }) => {
               <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
             )}
           </div>
+          P
         </div>
       </div>
 

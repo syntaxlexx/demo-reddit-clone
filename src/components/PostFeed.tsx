@@ -63,6 +63,8 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
                 subredditName={post.subreddit.name}
                 post={post}
                 commentAmt={post.comments.length}
+                currentVote={currentVote}
+                votesAmt={votesAmt}
               ></Post>
             </li>
           );
@@ -74,6 +76,8 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
               subredditName={post.subreddit.name}
               post={post}
               commentAmt={post.comments.length}
+              currentVote={currentVote}
+              votesAmt={votesAmt}
             ></Post>
           </li>
         );
