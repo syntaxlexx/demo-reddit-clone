@@ -32,6 +32,9 @@ const page: FC<pageProps> = async ({ params }) => {
         take: INFINITE_SCROLLING_PAGINATION_RESULTS,
       },
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   if (!subreddit) {

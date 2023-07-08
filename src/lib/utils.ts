@@ -46,7 +46,7 @@ function formatDistance(token: string, count: number, options?: any): string {
 }
 
 export function formatTimeToNow(date: Date): string {
-  return formatDistanceToNowStrict(date, {
+  return formatDistanceToNowStrict(new Date(date), {
     addSuffix: true,
     locale: {
       ...locale,
