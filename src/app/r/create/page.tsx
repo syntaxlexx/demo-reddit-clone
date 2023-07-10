@@ -2,15 +2,19 @@
 
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useCustomToast } from "@/hooks/use-custom-toast";
+import { toast } from "@/hooks/use-toast";
+import { CreateSubredditPayload } from "@/lib/validators/subreddit";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { CreateSubredditPayload } from "@/lib/validators/subreddit";
-import { toast } from "@/hooks/use-toast";
-import { useCustomToast } from "@/hooks/use-custom-toast";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-const page = () => {
+import { FC } from "react";
+
+interface PageProps {}
+
+const Page: FC<PageProps> = ({}) => {
   const [input, setInput] = useState<string>("");
   const router = useRouter();
   const { loginToast } = useCustomToast();
@@ -101,4 +105,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
