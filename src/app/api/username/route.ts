@@ -15,9 +15,11 @@ export async function PATCH(req: Request) {
 
         const { name } = UsernameValidator.parse(body)
 
+        const formattedUsername = name.replaceAll(' ', '')
+
         const exists = await db.user.findFirst({
             where: {
-                username: name,
+                username: formattedUsername,
             }
         })
 
@@ -30,7 +32,7 @@ export async function PATCH(req: Request) {
                 id: session.user.id,
             },
             data: {
-                username: name,
+                username: formattedUsername,
             }
         })
 
