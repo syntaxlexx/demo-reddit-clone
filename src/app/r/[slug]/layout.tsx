@@ -7,14 +7,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import React, { FC } from "react";
 
-interface layoutProps {
+interface LayoutProps {
   children: React.ReactNode;
   params: {
     slug: string;
   };
 }
 
-const layout: FC<layoutProps> = async ({ children, params }) => {
+const layout: FC<LayoutProps> = async ({ children, params }) => {
   const { slug } = params;
   const session = await getAuthSession();
 

@@ -4,13 +4,13 @@ import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
 import { FC } from "react";
 
-interface pageProps {
+interface PageProps {
   params: {
     slug: string;
   };
 }
 
-const page: FC<pageProps> = async ({ params }) => {
+const page: FC<PageProps> = async ({ params }) => {
   const subreddit = await db.subreddit.findFirst({
     where: {
       name: params.slug,
