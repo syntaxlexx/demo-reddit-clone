@@ -37,7 +37,7 @@ export async function PATCH(req: Request) {
             } else {
                 await db.commentVote.update({
                     where: {
-                        userId_postId: {
+                        userId_commentId: {
                             userId: session.user.id,
                             commentId
                         }

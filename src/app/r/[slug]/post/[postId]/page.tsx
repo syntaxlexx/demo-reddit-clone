@@ -20,7 +20,7 @@ interface PageProps {
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 
-const page = async ({ params }: PageProps) => {
+const Page = async ({ params }: PageProps) => {
   const cachedPost = (await redis.hgetall(
     `post:${params.postId}`
   )) as CachedPost;
@@ -110,4 +110,4 @@ function PostVoteShell() {
     </div>
   );
 }
-export default page;
+export default Page;

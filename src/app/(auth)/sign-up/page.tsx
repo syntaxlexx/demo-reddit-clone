@@ -3,9 +3,8 @@ import { buttonVariants } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { FC } from "react";
 
-const page: FC = ({}) => {
+const Page = () => {
   return (
     <div className="absolute inset-0">
       <div className="h-full max-w-2xl flex flex-col items-center justify-center gap-20">
@@ -26,4 +25,4 @@ const page: FC = ({}) => {
   );
 };
 
-export default page;
+export default Page;

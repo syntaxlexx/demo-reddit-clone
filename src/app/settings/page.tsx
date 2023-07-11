@@ -9,7 +9,7 @@ export const metadata = {
 
 interface PageProps {}
 
-const page = async ({}: PageProps) => {
+const Page = async ({}: PageProps) => {
   const session = await getAuthSession();
 
   if (!session?.user) {
@@ -26,7 +26,7 @@ const page = async ({}: PageProps) => {
         <UsernameForm
           user={{
             id: session.user.id,
-            username: session.user.username,
+            username: session.user.username as string | null,
           }}
         />
       </div>
@@ -34,4 +34,4 @@ const page = async ({}: PageProps) => {
   );
 };
 
-export default page;
+export default Page;

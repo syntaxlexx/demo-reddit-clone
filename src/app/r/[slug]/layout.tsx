@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { format } from "date-fns";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import React, { FC } from "react";
+import React from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +14,7 @@ interface LayoutProps {
   };
 }
 
-const layout: FC<LayoutProps> = async ({ children, params }) => {
+const Layout = async ({ children, params }: LayoutProps) => {
   const { slug } = params;
   const session = await getAuthSession();
 
@@ -116,4 +116,4 @@ const layout: FC<LayoutProps> = async ({ children, params }) => {
   );
 };
 
-export default layout;
+export default Layout;

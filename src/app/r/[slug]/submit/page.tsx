@@ -2,7 +2,6 @@ import Editor from "@/components/Editor";
 import { Button } from "@/components/ui/Button";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 
 interface PageProps {
   params: {
@@ -10,7 +9,7 @@ interface PageProps {
   };
 }
 
-const page: FC<PageProps> = async ({ params }) => {
+const Page = async ({ params }: PageProps) => {
   const subreddit = await db.subreddit.findFirst({
     where: {
       name: params.slug,
@@ -44,4 +43,4 @@ const page: FC<PageProps> = async ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

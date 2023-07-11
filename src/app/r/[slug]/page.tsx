@@ -4,7 +4,6 @@ import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 
 interface PageProps {
   params: {
@@ -12,7 +11,7 @@ interface PageProps {
   };
 }
 
-const page: FC<PageProps> = async ({ params }) => {
+const Page = async ({ params }: PageProps) => {
   const { slug } = params;
 
   const session = await getAuthSession();
@@ -58,4 +57,4 @@ const page: FC<PageProps> = async ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
